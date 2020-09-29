@@ -30,10 +30,10 @@ nextApp.prepare().then(() => {
   });
 
   // eslint-disable-next-line global-require
-  require("./routes/Format")(routerApi);
+  require("./routes/Example")(routerApi);
 
-  server.get("/format", (req, res) => {
-    return server.render(req, res, "/format", req.query);
+  server.get("/example", (req, res) => {
+    return server.render(req, res, "/example", req.query);
   });
 
   server.all("*", (req, res) => {
