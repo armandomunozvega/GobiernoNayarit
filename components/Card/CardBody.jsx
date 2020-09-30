@@ -1,3 +1,5 @@
+/* eslint-disable react/jsx-props-no-spreading */
+/* eslint-disable react/require-default-props */
 import React from "react";
 // nodejs library that concatenates classes
 import classNames from "classnames";

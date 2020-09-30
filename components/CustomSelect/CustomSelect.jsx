@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 // Dependencies
 import PropTypes from "prop-types";
 

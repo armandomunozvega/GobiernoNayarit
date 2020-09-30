@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-props-no-spreading */
 // Dependencies
 import PropTypes from "prop-types";
 import classNames from "classnames";
