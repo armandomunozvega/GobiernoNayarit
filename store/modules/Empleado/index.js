@@ -3,19 +3,19 @@ import { apiClient } from "~/utils/api";
 
 // Initial state
 const initialState = {
-  example: {},
+  empleados: [],
 };
 
 /* Types */
-export const ACTION_EXAMPLE = "ACTION_EXAMPLE";
+export const ACTION_GET_EMPLEADOS = "ACTION_GET_EMPLEADOS";
 
 /* Reducer */
 export default (state = initialState, action) => {
   switch (action.type) {
-    case ACTION_EXAMPLE: {
+    case ACTION_GET_EMPLEADOS: {
       return {
         ...state,
-        example: { ...state.example, ...action.Obj },
+        empleados: action.Obj,
       };
     }
     default:
@@ -24,12 +24,12 @@ export default (state = initialState, action) => {
 };
 
 /* Action Creators */
-export const getExample = (formObj) => {
+export const getEmpleados = () => {
   return (dispatch) => {
-    return new apiClient.post("/api/example", formObj)
+    return new apiClient.get("employees", {})
       .then((response) => {
         console.log(response);
-        dispatch({ type: ACTION_EXAMPLE, Obj: {} });
+        dispatch({ type: ACTION_GET_EMPLEADOS, Obj: response.data });
       })
       .catch((err) => {
         console.log(err);

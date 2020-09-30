@@ -8,7 +8,6 @@ const {
 
 const api = axios.create({
   baseURL: apiUrl,
-  withCredentials: true,
   responseType: "json",
 });
 

@@ -30,10 +30,10 @@ nextApp.prepare().then(() => {
   });
 
   // eslint-disable-next-line global-require
-  require("./routes/Example")(routerApi);
+  require("./routes/Empleado")(routerApi);
 
-  server.get("/example", (req, res) => {
-    return server.render(req, res, "/example", req.query);
+  server.get("/getEmpleados", (req, res) => {
+    return server.render(req, res, "/getEmpleados", req.query);
   });
 
   server.all("*", (req, res) => {

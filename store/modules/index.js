@@ -1,8 +1,8 @@
 // Dependencies
 import { combineReducers } from "redux";
 
-import example from "./example";
+import empleados from "./Empleado";
 
 export default combineReducers({
-  example,
+  empleados,
 });
