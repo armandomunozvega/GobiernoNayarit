@@ -13,9 +13,13 @@ module.exports = {
   env: {
     mocha: true,
     es6: true,
+    jest: true,
   },
   plugins: ["prettier", "react"],
   rules: {
+    "jsx-a11y/anchor-is-valid": "off",
+    "react/jsx-props-no-spreading": "off",
+    "class-methods-use-this": "off",
     "no-param-reassign": "off",
     "prefer-template": "off",
     "for-direction": "off",
@@ -39,7 +43,7 @@ module.exports = {
     "import/resolver": {
       "eslint-import-resolver-custom-alias": {
         alias: {
-          "~": "./",
+          "~": "./src/frontend",
         },
         extensions: [".js", ".jsx", ".json"],
       },
@@ -49,6 +53,7 @@ module.exports = {
     React: "writable",
     window: "writable",
     document: "writable",
+    fetch: "writable",
     APP_CONFIG: true,
     APP_CONSTANTS: true,
   },

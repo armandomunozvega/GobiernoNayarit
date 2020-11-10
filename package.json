@@ -1,25 +1,30 @@
 {
-  "name": "paribas-cardiff",
+  "name": "nextjs-with-custom-server",
   "version": "1.0.0",
-  "description": "Paribas Cardiff",
+  "description": "InterWare de México",
   "main": "next.config.js",
   "author": "Israel López Tiscareño",
   "license": "ISC",
   "keywords": [
-    "paribas",
-    "cardiff"
+    "nextjs",
+    "express",
+    "node",
+    "material-ui",
+    "redux",
+    "redux-persist"
   ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "node server/server.js",
-    "build": "next build",
-    "export": "next export",
-    "start": "cross-env NODE_ENV=production node server/server.js",
-    "install:clean": "rm -rf node_modules/ && rm -rf package-lock.json && rm -rf .next/ && npm install && npm run dev",
+    "dev": "npm run next-server",
+    "build": "next build src/frontend",
+    "start": "NODE_ENV=production npm run next-server",
+    "next-server": "node ./src/server/app.js",
+    "test": "node scripts/jest.js src --coverage --env=jsdom",
+    "install:clean": "rm -rf node_modules/ && rm -rf package-lock.json && rm -rf .next/ && yarn install && yarn run dev",
     "compile-sass": "node-sass assets/scss/misc.scss assets/css/misc.css",
     "minify-sass": "node-sass assets/scss/misc.scss assets/css/misc.min.css --output-style compressed",
     "map-sass": "node-sass assets/scss/misc.scss assets/css/misc.css --source-map true",
-    "watch-prettier": "-- prettier --write {{event}} to {{changed}}"
+    "watch-prettier": "-- prettier --write {{event}} to {{changed}}",
+    "sonar-scanner": "node ./sonar-project.js"
   },
   "husky": {
     "hooks": {
@@ -32,26 +37,37 @@
       "git add"
     ]
   },
+  "jestSonar": {
+    "reportPath": "reports",
+    "reportFile": "report.xml",
+    "indent": 2
+  },
   "dependencies": {
     "@material-ui/core": "^4.11.0",
     "@material-ui/icons": "^4.9.1",
     "@material-ui/lab": "^4.0.0-alpha.56",
+    "@testing-library/jest-dom": "^5.11.5",
+    "@testing-library/react": "^11.1.0",
     "@zeit/next-css": "^1.0.1",
     "@zeit/next-sass": "^1.0.1",
     "animate.css": "^4.1.0",
-    "axios": "^0.20.0",
+    "axios": "^0.21.0",
     "body-parser": "^1.19.0",
     "classnames": "^2.2.6",
+    "cors": "^2.8.5",
     "cross-env": "^7.0.2",
     "express": "^4.17.1",
     "formik": "^2.1.5",
+    "helmet": "^4.1.1",
+    "jest": "^26.6.1",
+    "js-cookie": "^2.2.1",
+    "log4js": "^6.3.0",
     "moment": "^2.28.0",
     "next": "latest",
     "next-compose-plugins": "^2.2.0",
-    "next-images": "^1.4.0",
+    "next-optimized-images": "^2.6.2",
     "node-sass": "^4.14.1",
     "nouislider": "^14.6.0",
-    "path": "^0.12.7",
     "prop-types": "^15.7.2",
     "react": "^16.7.0",
     "react-animate-on-scroll": "^2.1.5",
@@ -61,13 +77,18 @@
     "react-swipeable-views": "^0.13.9",
     "redux": "^4.0.5",
     "redux-devtools-extension": "^2.13.8",
+    "redux-persist": "^6.0.0",
     "redux-thunk": "^2.3.0",
+    "sonarqube-scanner": "^2.7.0",
     "underscore": "^1.11.0",
     "webpack": "^4.43.0",
     "yup": "^0.29.3"
   },
   "devDependencies": {
+    "@testing-library/dom": "^7.26.5",
+    "@testing-library/user-event": "^12.2.0",
     "babel-eslint": "^10.1.0",
+    "babel-jest": "^26.6.0",
     "babel-plugin-inline-react-svg": "^1.1.1",
     "babel-plugin-module-resolver": "^4.0.0",
     "eslint": "^7.6.0",
@@ -80,9 +101,10 @@
     "eslint-plugin-react": "^7.20.5",
     "eslint-plugin-react-hooks": "^4.0.8",
     "husky": "^4.2.5",
+    "identity-obj-proxy": "^3.0.0",
+    "jest-sonar-reporter": "^2.0.0",
     "lint-staged": "^10.2.11",
-    "optimize-css-assets-webpack-plugin": "^5.0.3",
-    "prettier": "^2.0.5",
-    "raw-loader": "^4.0.1"
+    "nodemon": "^2.0.4",
+    "prettier": "^2.0.5"
   }
 }
